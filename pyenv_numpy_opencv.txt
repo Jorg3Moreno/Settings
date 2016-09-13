@@ -1,0 +1,56 @@
+INSTALACIÓN PYTHON
+==================
+	como super usuario:
+	-------------------
+	apt-get update
+
+	apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+	libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils git
+
+	como usuario normal
+	--------------------
+	curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+
+	(agregar al archivo .bash_profile o .bashrc)
+	export PATH="/root/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+
+	bash
+	env | grep PY
+
+	(python 2.7.9)
+	pyenv install 2.7.9
+
+	(actualizar y comprobar las nuevas versiones)
+	pyenv rehash
+	pyenv versions
+
+	# (usar una version de python específica en esa shell)
+	# pyenv shell 2.7.9
+
+	(creación hambiente virtual)
+	pyenv virtualenv tesis-people-detection
+
+	(usar hambiente virtual)
+	pyenv activate tesis-people-detection
+
+INSTALACIÓN NUMPY
+=================
+	pip install numpy
+
+INSTALL OPENCV
+==============
+	apt-get install cmake libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+	apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+	git clone https://github.com/Itseez/opencv.git
+	----------------------
+	(compilacion opencv)
+	cd /opencv
+	mkdir release
+	cd release
+	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+	make
+	----------------------
+	copiar cv2.so (release/lib) -> site-packages(.virtualenvs/nombre_env/lib/python2.7/site-package)
+
