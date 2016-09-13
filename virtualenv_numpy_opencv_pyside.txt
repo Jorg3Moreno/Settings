@@ -1,0 +1,95 @@
+CONFIGURACION DEL HAMBIENTE
+
+++++++++++
+WINDOWS
+++++++++++
+
+pip install virtualenv
+pip install virtualenvwrapper-win
+
+In Windows, the default path for WORKON_HOME is %USERPROFILE%Envs
+mkvirtualenv nombre_env
+
+para trabajar sobre un ambiente virtual
+workon nombre_env 
+
+para desactivar el ambiente virtual sobre el que se esta trabajando
+deactivate
+
+pip install numpy
+pip install scipy "NOT WORK!!!"
+
+donwload opencv from sourceforge an copy cv2.pyd file into virtual-env\Lib\site-packages
+
+
++++++++++++++++++
+  TRAIN CASCADE
++++++++++++++++++
+D:\Users\jorge\Desktop\INRIA\INRIAPerson\Train>D:\Users\jorge\Downloads\Programs\opencv\build\x86\vc12\bin\opencv_createsamples.exe -info personsInfo.txt -num 614 -w 54 -h 130 -vec persons.vec
+D:\Users\jorge\Desktop\INRIA\INRIAPerson\Train>D:\Users\jorge\Downloads\Programs\opencv\build\x86\vc12\bin\opencv_createsamples.exe -vec persons.vec -w 54 -h 130
+D:\Users\jorge\Desktop\INRIA\INRIAPerson\Train>D:\Users\jorge\Downloads\Programs\opencv\build\x86\vc12\bin\opencv_traincascade.exe -data train_results -vec persons.vec -bg neg.txt -numPos 540 -numNeg 1218 -numStages 20 -w 54 -h 130 -featureType HOG
+
++++++++++++++
+	LINUX
++++++++++++++
+
+INSTALL VIRTUALENV
+===================
+	apt-get install python-pip
+	pip install virtualenv
+	pip install --user virtualenvwrapper (instala en el usuario actual no root)
+	(1)source /home/jorge/.local/bin/virtualenvwrapper.sh
+	(2)source /usr/local/bin/virtualenvwrapper.sh (nuevo usuario /home/user/.virtualenv/env) (hacerlo cada vez que se desee crear un nuevo entorno virtual)
+	mkvirtualenv nombre_env
+	workon nombre_env
+
+INSTALL NUMPY
+==============
+	pip install numpy
+
+INSTALL OPENCV
+==============
+	apt-get install build-essential
+	apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+	apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+	git clone https://github.com/Itseez/opencv.git
+	----------------------
+	(compilacion opencv)
+	cd ~/opencv
+	mkdir release
+	cd release
+	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+	make
+	----------------------
+	copiar cv2.so (release/lib) -> site-packages(.virtualenvs/nombre_env/lib/python2.7/site-package)
+
+INSTALL SCIPY
+=============
+	pip install pillow
+	pip install scipy
+
+INSTALL MATPLOTLIB
+================
+	apt-get install tcl-dev tk-dev python-tk python3-tk (only based debian linux)
+	pip install matplotlib (If you have ready installed matploitlib uninstall and install from source git clone https://github.com/matplotlib/matplotlib.git) [1]
+
+INSTALL PySide - QT4
+=================
+	pip intall PySide
+	(pyside-uic untitled.ui -o ui_form.py)
+
+	apt-get install python-qt4
+	apt-get install qt4-designer
+	apt-get install pyqt4-dev-tools
+	(pyuic4 uifile.ui -o pyfile.py)
+
+
+
+
+[1] http://www.pyimagesearch.com/2015/08/24/resolved-matplotlib-figures-not-showing-up-or-displaying/
+
+
+
+http://pybonacci.org/2012/05/19/manual-de-introduccion-a-matplotlib-pyplot-ii-creando-y-manejando-ventanas-y-configurando-la-sesion/
+http://pybonacci.org/2012/05/25/manual-de-introduccion-a-matplotlib-pyplot-iii-configuracion-del-grafico/
+http://scikit-image.org/docs/dev/auto_examples/edges/plot_active_contours.html
